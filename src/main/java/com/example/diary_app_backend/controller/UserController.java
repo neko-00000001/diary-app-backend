@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.diary_app_backend.model.User;
 import com.example.diary_app_backend.service.UserService;
 
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -18,12 +19,12 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
+    
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestParam String username, @RequestParam String password) {
         try {
             User user = userService.registerUser(username, password);
-            return ResponseEntity.ok("ユーザー登録成功: " + user.getUserName());
+            return ResponseEntity.ok("ユーザー登録成功: " + user.getUsername());
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

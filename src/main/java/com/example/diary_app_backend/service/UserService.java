@@ -20,7 +20,7 @@ public class UserService {
     public User registerUser(String username, String password) {
         // ユーザー名の重複チェック(Optionalの中身を確認)
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new RuntimeException("このユーザー名は既に登録されています");
+            throw new RuntimeException("このユーザー名は既に使用されています");
         }
 
         // パスワードをハッシュ化
@@ -28,7 +28,7 @@ public class UserService {
 
         // 新しいユーザーを作成して保存
         User newUser = new User();
-        newUser.setUserName(username);
+        newUser.setUsername(username);
         newUser.setPassword(encodedPassword);
 
         return userRepository.save(newUser);
