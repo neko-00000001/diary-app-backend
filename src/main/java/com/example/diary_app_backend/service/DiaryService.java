@@ -41,8 +41,8 @@ public class DiaryService {
         });
     }
 
-        // ✅ 日記を削除
-        public void deleteDiary(Long id) {
-            diaryRepository.deleteById(id);
-        }
+    // 日記を削除
+    public void deleteDiary(Long id) {
+        diaryRepository.deleteById(id);
+    }
 }
